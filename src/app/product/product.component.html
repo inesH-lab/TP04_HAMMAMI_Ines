@@ -1,0 +1,65 @@
+<h2 >Catalogue</h2>
+
+<div class="container">
+<input type="text" class="form-control" [(ngModel)]="searchText" 
+placeholder="Search">
+
+<!--
+<div class="row" id="filters" >
+  <div class="form-check form-check-inline col-auto">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="all" value="" [(ngModel)]="type" checked>
+      <label class="form-check-label" >everything</label>
+  </div>
+  <div class="form-check form-check-inline col-auto">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="detail" value="detail" [(ngModel)]="type">
+      <label class="form-check-label" for="detail">detail</label>
+  </div>
+  <div class="form-check form-check-inline col-auto">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="detail" value="price" [(ngModel)]="type">
+    <label class="form-check-label" for="detail">price</label>
+</div>
+  </div>
+</div>
+-->
+<p>
+  <div class="col d-flex justify-content-center">
+
+  
+<div class ="row">
+<div class="col" *ngFor="let product of (ProductList | search: searchText) as Product " >
+  <div class="card" style="width: 30rem;">
+    <div class="card-body">
+      <span class="card-number card-circle subtle">01</span>
+      <span class="card-author subtle"> Ines</span>
+      <h2 class="card-title">{{product.name}}</h2>
+      <span class="card-description subtle">{{ product.Commentaire }}</span>
+      <div class="card-read">{{ product.price }}$</div>
+      <span class="card-tag card-circle subtle">Inc</span>
+    </div>
+    <img src='{{ product.image }}'   class="card-media" height="400" />
+  </div>
+  <div class="card-shadow"></div>
+</div>   
+</div> 
+</div>
+
+  <table class="table table-hover">
+  <thead>
+    <tr> 
+      <th scope="col">Bath Bomb</th>
+      <th scope="col"> Détail</th>
+      <th scope="col">Commentaire</th>
+      <th scope="col"> Prix </th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let product of ProductList | filter:searchText">
+    <tr class="table-active">
+      <td> {{product.name}}</td>
+      <td>{{product.detail}}</td>
+      <td>{{product.Commentaire}}</td>
+      <td>{{product.price}}</td>     
+    </tr>
+  </tbody>
+</table>
+  
+
